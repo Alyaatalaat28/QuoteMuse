@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quotegeneratorapp/cubit/cubit.dart';
 import 'package:quotegeneratorapp/cubit/states.dart';
-import 'package:quotegeneratorapp/modules/bookmark.dart';
+import 'package:quotegeneratorapp/modules/welcome.dart';
 import 'package:quotegeneratorapp/modules/fav.dart';
 import 'package:quotegeneratorapp/modules/home.dart';
 import 'package:quotegeneratorapp/modules/search.dart';
@@ -45,7 +45,7 @@ class BottomNavigationScreen extends StatelessWidget {
                         children: [
                           IconButton(
                             icon: Icon(
-                              Icons.home,
+                              Icons.format_quote_outlined,
                               color:cubit.currentIndex == 0 ?Color(0xff8249B5) : Colors.grey.shade400,
                             ),
                             onPressed: () {
@@ -55,7 +55,7 @@ class BottomNavigationScreen extends StatelessWidget {
                           ),
                           IconButton(
                               icon: Icon(
-                                Icons.favorite,
+                                Icons.home,
                                 color: cubit.currentIndex == 1 ?Color(0xff8249B5): Colors.grey.shade400,
                               ),
                               onPressed: () {
@@ -66,7 +66,7 @@ class BottomNavigationScreen extends StatelessWidget {
                           ),
                           IconButton(
                               icon: Icon(
-                                Icons.search,
+                                Icons.favorite,
                                 color: cubit.currentIndex == 2 ? Color(0xff8249B5): Colors.grey.shade400,
                               ),
                               onPressed: () {
@@ -74,7 +74,7 @@ class BottomNavigationScreen extends StatelessWidget {
                               }),
                           IconButton(
                               icon: Icon(
-                                Icons.bookmark,
+                                Icons.search,
                                 color: cubit.currentIndex == 3 ?Color(0xff8249B5) : Colors.grey.shade400,
                               ),
                               onPressed: () {
@@ -95,10 +95,11 @@ class BottomNavigationScreen extends StatelessWidget {
               child: IndexedStack(
                 index: cubit.currentIndex,
                 children: [
+                  WelcomeScreen(),
                   HomeScreen(),
                   FavoriteScreen(),
                   SearchScreen(),
-                  BookMarkScreen(),
+                  
                 ],
               )),
           ],
