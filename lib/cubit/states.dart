@@ -11,3 +11,9 @@ class GetRandomQuotesLoadingState extends AppStates{}
 class GetRandomQuotesSuccessState extends AppStates{}
 
 class GetRandomQuotesErrorState extends AppStates{}
+
+class SearchLoadingState extends AppStates{}
+
+class SearchSuccessState extends AppStates{}
+
+class SearchErrorState extends AppStates{}
