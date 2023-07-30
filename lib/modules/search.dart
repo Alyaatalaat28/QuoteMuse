@@ -22,7 +22,6 @@ class SearchScreen extends StatelessWidget {
             children: [
               Container(
                 width:double.infinity ,
-                height:60.0 ,
                 decoration: BoxDecoration(
                   color:Colors.white ,
                   borderRadius: BorderRadius.circular(6.0),
@@ -30,10 +29,13 @@ class SearchScreen extends StatelessWidget {
                 child: TextFormField(
                   controller:searchController ,
                   keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                  ),
                   
                 ),
               ),
-              const SizedBox(height:20.0),
+              const SizedBox(height:10.0),
               itemBuilder(),
            ]),
          ),
