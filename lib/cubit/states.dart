@@ -17,3 +17,7 @@ class SearchLoadingState extends AppStates{}
 class SearchSuccessState extends AppStates{}
 
 class SearchErrorState extends AppStates{}
+
+class AppAddQuoteToFavoritesState extends AppStates{}
+
+class AppRemoveQuoteFromFavoritesState extends AppStates{}

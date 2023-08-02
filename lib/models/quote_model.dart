@@ -20,5 +20,8 @@ class QuotesModel {
     dateModified = json['dateModified'];
   }
 
- 
+   @override
+  String toString() {
+    return 'QuotesModel{sId: $sId, content: $content, author: $author, tags: $tags, authorSlug: $authorSlug, length: $length, dateAdded: $dateAdded, dateModified: $dateModified}';
+  }
 }

@@ -47,7 +47,24 @@ void Search({required String query}){
     emit(SearchErrorState());
   });
 }
+List<dynamic>quotes=[];
 
+void addQuoteToFavorites(dynamic model) {
+  quotes.add(model);
+  print(quotes);
+  emit(AppAddQuoteToFavoritesState());
+}
+
+void removeQuoteFromFavorites(dynamic model) {
+  quotes.remove(model);
+  emit(AppRemoveQuoteFromFavoritesState());
+}
+
+// void addQuoteToFavoritesSearch(Results model) {
+//   quotes.add(model);
+//   print(quotes);
+//   emit(AppAddQuoteToFavoritesState());
+// }
 
 
 }

@@ -1,3 +1,5 @@
+
+
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../cubit/cubit.dart';
 import '../cubit/states.dart';
+import 'fav.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -42,20 +45,25 @@ class HomeScreen extends StatelessWidget {
                         ),
                        ),
                        child: Center(
-                         child: Text('Click Here To View Favorite Quotes',
-                         style: GoogleFonts.gemunuLibre(
-                          color:Color(0xff323232),
-                          fontWeight: FontWeight.w400,
-                          fontSize: 26.0,
-                          
-                         ),),
+                         child: TextButton(
+                          onPressed:(){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>FavoriteScreen()));
+                          },
+                           child: Text('Click Here To View Favorite Quotes',
+                           style: GoogleFonts.gemunuLibre(
+                            color:Color(0xff323232),
+                            fontWeight: FontWeight.w400,
+                            fontSize: 26.0,
+                            
+                           ),),
+                         ),
                        ),
                       ),
                     ),
                     CircleAvatar(
                       backgroundColor: Colors.black,
                       radius: 16.0,
-                      child: Text('2',
+                      child: Text('${cubit.quotes.length}',
                       style:GoogleFonts.gemunuLibre(
                         color: Color(0xffFBFBFB),
                         fontSize: 22.0,
@@ -71,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                    Container(
               padding:EdgeInsets.all(20.0) ,
                width: double.infinity,
-               height: 216.0,
+               height: 300.0,
                color:  Colors.white,
                child:Column(
                 children: [
@@ -81,7 +89,8 @@ class HomeScreen extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     fontSize: 26.0,
                   ),), 
-                  SizedBox(height: 5.0,),
+                  const SizedBox(height:10.0),
+                 
                   Row(
                     children:[
                       const Spacer(),
@@ -92,46 +101,53 @@ class HomeScreen extends StatelessWidget {
                         fontSize: 22.0,))
                     ]
                   ), 
-                  const SizedBox(height: 5.0,),
+                  Spacer(),
                   Expanded(
                     child: Row(
                       children: [
-                        Container(
-                         width:203.0,
-                         height:48.0,
-                         decoration: const BoxDecoration(
-                          color: Color(0xff8249B5),
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(6),
-                          )
-                         ),
-                         child:TextButton(
-                          onPressed: (){
-                            cubit.getRandomQuotes();
-                          },
-                           child: Text('Generate Another Quote',
-                           style:GoogleFonts.gemunuLibre(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 20.0,)))),
-                          const Spacer(),
-                          Container(
-                            width:100.0 ,
-                            height:48.0 ,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(
-                                color: const Color(0xff8249B5),
+                        Expanded(
+                          flex: 3,
+                          child: Container(
+                           width:150.0,
+                           height:48.0,
+                           decoration: const BoxDecoration(
+                            color: Color(0xff8249B5),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(6),
+                            )
+                           ),
+                           child:TextButton(
+                            onPressed: (){
+                              cubit.getRandomQuotes();
+                            },
+                             child: Text('Generate Another Quote',
+                             style:GoogleFonts.gemunuLibre(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 20.0,)))),
+                        ), 
+                          Expanded(
+                            child: Container(
+                              width:90.0 ,
+                              height:48.0 ,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(
+                                  color: const Color(0xff8249B5),
+                                ),
+                                borderRadius:const BorderRadius.only(
+                                  bottomRight: Radius.circular(6),
+                                )
                               ),
-                              borderRadius:const BorderRadius.only(
-                                bottomRight: Radius.circular(6),
-                              )
-                            ),
-                            child: IconButton(
-                              icon:const Icon(Icons.favorite,
-                              color: Color(0xff8249B5),),
-                            onPressed: (){},
-                            )),
+                              child: IconButton(
+                                icon:const Icon(Icons.favorite,
+                                color: Color(0xff8249B5),),
+                              onPressed: (){
+                                cubit.addQuoteToFavorites(cubit.quotesModel!);
+                              },
+                              )),
+                          ),
+                          
                           
                       ],
                     ),

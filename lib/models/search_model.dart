@@ -82,6 +82,19 @@ class Results {
     dateAdded = json['dateAdded'];
     dateModified = json['dateModified'];
   }
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['_id'] = this.sId;
+    data['content'] = this.content;
+    data['author'] = this.author;
+    data['tags'] = this.tags;
+    data['authorId'] = this.authorId;
+    data['authorSlug'] = this.authorSlug;
+    data['length'] = this.length;
+    data['dateAdded'] = this.dateAdded;
+    data['dateModified'] = this.dateModified;
+    return data;
+  }
 
   
 }
