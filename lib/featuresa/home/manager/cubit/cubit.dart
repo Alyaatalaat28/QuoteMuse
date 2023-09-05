@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quotegeneratorapp/cubit/states.dart';
-import 'package:bloc/bloc.dart';
-import '../models/quote_model.dart';
-import '../models/search_model.dart';
-import '../network/dio_helper.dart';
+import 'package:quotegeneratorapp/featuresa/home/manager/cubit/states.dart';
+
+import '../../../../core/utils/api_services/dio_helper.dart';
+import '../../../search/data/search_model.dart';
+import '../../data/quote_model.dart';
+
 
 class AppCubit extends Cubit<AppStates>{
   AppCubit():super(AppInitialState());
@@ -60,11 +60,7 @@ void removeQuoteFromFavorites(dynamic model) {
   emit(AppRemoveQuoteFromFavoritesState());
 }
 
-// void addQuoteToFavoritesSearch(Results model) {
-//   quotes.add(model);
-//   print(quotes);
-//   emit(AppAddQuoteToFavoritesState());
-// }
+
 
 
 }

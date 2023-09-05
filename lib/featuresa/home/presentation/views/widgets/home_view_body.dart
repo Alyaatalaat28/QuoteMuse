@@ -5,11 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../cubit/cubit.dart';
-import '../cubit/states.dart';
-import 'fav.dart';
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+import '../../../../favorite/presentation/views/fav.dart';
+import '../../../manager/cubit/cubit.dart';
+import '../../../manager/cubit/states.dart';
+
+class HomeViewBody extends StatelessWidget {
+  const HomeViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class HomeScreen extends StatelessWidget {
       builder:(context,state){
         var cubit=AppCubit.get(context);
        return Scaffold(
-        backgroundColor: Color(0xff8249B5),
+        backgroundColor: const Color(0xff8249B5),
         body:ConditionalBuilder(
           condition: cubit.quotesModel!=null,
           builder:(context)=> Padding(
@@ -27,7 +28,7 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+              SizedBox(
                 height: 90.0,
                 child: Stack(
                   alignment: AlignmentDirectional.topEnd,
@@ -37,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                       child: Container(
                        width: double.infinity,
                        height: 76.0,
-                       decoration: BoxDecoration(
+                       decoration: const BoxDecoration(
                         color: Color(0xb2fbfbfb),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(6),
@@ -47,11 +48,11 @@ class HomeScreen extends StatelessWidget {
                        child: Center(
                          child: TextButton(
                           onPressed:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>FavoriteScreen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>const FavoriteScreen()));
                           },
                            child: Text('Click Here To View Favorite Quotes',
                            style: GoogleFonts.gemunuLibre(
-                            color:Color(0xff323232),
+                            color:const Color(0xff323232),
                             fontWeight: FontWeight.w400,
                             fontSize: 26.0,
                             
@@ -65,7 +66,7 @@ class HomeScreen extends StatelessWidget {
                       radius: 16.0,
                       child: Text('${cubit.quotes.length}',
                       style:GoogleFonts.gemunuLibre(
-                        color: Color(0xffFBFBFB),
+                        color: const Color(0xffFBFBFB),
                         fontSize: 22.0,
                         fontWeight: FontWeight.w400
                       ),),
@@ -77,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                 height: 5.0,
               ),
                    Container(
-              padding:EdgeInsets.all(20.0) ,
+              padding:const EdgeInsets.all(20.0) ,
                width: double.infinity,
                height: 300.0,
                color:  Colors.white,
@@ -85,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Text('${cubit.quotesModel!.content}',
                   style: GoogleFonts.gemunuLibre(
-                    color: Color(0xff323232),
+                    color: const Color(0xff323232),
                     fontWeight: FontWeight.w400,
                     fontSize: 26.0,
                   ),), 
@@ -101,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                         fontSize: 22.0,))
                     ]
                   ), 
-                  Spacer(),
+                  const Spacer(),
                   Expanded(
                     child: Row(
                       children: [
@@ -159,7 +160,7 @@ class HomeScreen extends StatelessWidget {
             ],
             ),
           ),
-          fallback: (context)=>Center(child: CircularProgressIndicator()),
+          fallback: (context)=>const Center(child: CircularProgressIndicator()),
         ),
       );}
     );

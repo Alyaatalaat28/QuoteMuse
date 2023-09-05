@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../../../../home/manager/cubit/cubit.dart';
+import '../../../../home/manager/cubit/states.dart';
 
-import '../cubit/cubit.dart';
-import '../cubit/states.dart';
 
-class WelcomeScreen extends StatelessWidget {
-   WelcomeScreen({super.key});
+class WelcomeViewBody extends StatelessWidget {
+ const  WelcomeViewBody({super.key});
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit,AppStates>(
       listener:(context,state){} ,
       builder:(context,state){
-        return Scaffold(
+        return const Scaffold(
          backgroundColor: Color(0xff8249B5),
          body:Padding(
-           padding: const EdgeInsets.all(20.0),
+           padding: EdgeInsets.all(20.0),
            child: Center(
            child: Icon(
             Icons.format_quote_outlined,

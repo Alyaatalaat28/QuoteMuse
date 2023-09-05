@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quotegeneratorapp/cubit/cubit.dart';
-import 'package:quotegeneratorapp/cubit/states.dart';
-import 'package:quotegeneratorapp/modules/welcome.dart';
-import 'package:quotegeneratorapp/modules/fav.dart';
-import 'package:quotegeneratorapp/modules/home.dart';
-import 'package:quotegeneratorapp/modules/search.dart';
+
+import '../../../../favorite/presentation/views/fav.dart';
+import '../../../../search/presentation/views/search.dart';
+import '../../../../welcome/presentation/views/welcome.dart';
+import '../../../manager/cubit/cubit.dart';
+import '../../../manager/cubit/states.dart';
+import '../home.dart';
+
 
 class BottomNavigationScreen extends StatelessWidget {
-  BottomNavigationScreen({super.key});
+  const BottomNavigationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class BottomNavigationScreen extends StatelessWidget {
       builder: (context,State){
         var cubit=AppCubit.get(context);
       return Scaffold(
-        backgroundColor:Color(0xff8249B5),
+        backgroundColor:const Color(0xff8249B5),
         body: Stack(
           children: [
             Positioned(
@@ -35,7 +37,7 @@ class BottomNavigationScreen extends StatelessWidget {
                     ),
                     Center(
                       heightFactor: 0.6,
-                      child: FloatingActionButton(backgroundColor: Color(0xff8249B5), child: Icon(Icons.quora_outlined), elevation: 0.1, onPressed: () {}),
+                      child: FloatingActionButton(backgroundColor: const Color(0xff8249B5), child: const Icon(Icons.quora_outlined), elevation: 0.1, onPressed: () {}),
                     ),
                     Container(
                       width: size.width,
@@ -46,7 +48,7 @@ class BottomNavigationScreen extends StatelessWidget {
                           IconButton(
                             icon: Icon(
                               Icons.format_quote_outlined,
-                              color:cubit.currentIndex == 0 ?Color(0xff8249B5) : Colors.grey.shade400,
+                              color:cubit.currentIndex == 0 ?const Color(0xff8249B5) : Colors.grey.shade400,
                             ),
                             onPressed: () {
                              cubit.setBottomBarIndex(0);
@@ -56,7 +58,7 @@ class BottomNavigationScreen extends StatelessWidget {
                           IconButton(
                               icon: Icon(
                                 Icons.home,
-                                color: cubit.currentIndex == 1 ?Color(0xff8249B5): Colors.grey.shade400,
+                                color: cubit.currentIndex == 1 ?const Color(0xff8249B5): Colors.grey.shade400,
                               ),
                               onPressed: () {
                                cubit.setBottomBarIndex(1);
@@ -67,7 +69,7 @@ class BottomNavigationScreen extends StatelessWidget {
                           IconButton(
                               icon: Icon(
                                 Icons.favorite,
-                                color: cubit.currentIndex == 2 ? Color(0xff8249B5): Colors.grey.shade400,
+                                color: cubit.currentIndex == 2 ? const Color(0xff8249B5): Colors.grey.shade400,
                               ),
                               onPressed: () {
                                 cubit.setBottomBarIndex(2);
@@ -75,7 +77,7 @@ class BottomNavigationScreen extends StatelessWidget {
                           IconButton(
                               icon: Icon(
                                 Icons.search,
-                                color: cubit.currentIndex == 3 ?Color(0xff8249B5) : Colors.grey.shade400,
+                                color: cubit.currentIndex == 3 ?const Color(0xff8249B5) : Colors.grey.shade400,
                               ),
                               onPressed: () {
                                 cubit.setBottomBarIndex(3);
@@ -96,8 +98,8 @@ class BottomNavigationScreen extends StatelessWidget {
                 index: cubit.currentIndex,
                 children: [
                   WelcomeScreen(),
-                  HomeScreen(),
-                  FavoriteScreen(),
+                  const HomeScreen(),
+                  const FavoriteScreen(),
                   SearchScreen(),
                   
                 ],
@@ -120,7 +122,7 @@ class BNBCustomPainter extends CustomPainter {
     path.moveTo(0, 20); // Start
     path.quadraticBezierTo(size.width * 0.20, 0, size.width * 0.35, 0);
     path.quadraticBezierTo(size.width * 0.40, 0, size.width * 0.40, 20);
-    path.arcToPoint(Offset(size.width * 0.60, 20), radius: Radius.circular(20.0), clockwise: false);
+    path.arcToPoint(Offset(size.width * 0.60, 20), radius: const Radius.circular(20.0), clockwise: false);
     path.quadraticBezierTo(size.width * 0.60, 0, size.width * 0.65, 0);
     path.quadraticBezierTo(size.width * 0.80, 0, size.width, 20);
     path.lineTo(size.width, size.height);
